@@ -1,0 +1,13 @@
+{
+    "name": "mini/ecommerce-api",
+    "description": "API E-Commerce",
+    "type": "project",
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mini\\": "app/"
+        }
+    }
+}

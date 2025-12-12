@@ -1,0 +1,201 @@
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+}
+
+body {
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border: none;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  color: white;
+}
+
+.product-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.navbar-custom {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.footer-custom {
+  background-color: #2c3e50;
+  color: white;
+  margin-top: 3rem;
+}
+
+.page-header {
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-weight: bold;
+  color: #333;
+}
+
+
+/* Animations smooth */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Animation au chargement des cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Animation au hover sur les boutons */
+.btn-gradient:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Effet de pulse sur le badge du panier */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.badge {
+  animation: pulse 2s infinite;
+}
+
+/* Skeleton loading pour les images */
+.product-card img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Effet glassmorphism sur les cards */
+.card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Effet parallax sur le hero */
+.hero-section {
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+body.dark-mode .card {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode .navbar-custom {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+}
+
+/* ================================
+   PAGINATION CUSTOM
+   ================================ */
+.pagination {
+  gap: 5px;
+}
+
+.pagination .page-item .page-link {
+  border-radius: 5px;
+  color: var(--primary-color);
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.pagination .page-item.active .page-link {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+  cursor: not-allowed;
+}
+
+/* Dark mode pagination */
+body.dark-mode .pagination .page-item .page-link {
+  background-color: #2d2d2d;
+  color: #667eea;
+  border-color: #444;
+}
+
+body.dark-mode .pagination .page-item .page-link:hover {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+body.dark-mode .pagination .page-item.active .page-link {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.dark-mode .pagination .page-item.disabled .page-link {
+  background-color: #1a1a1a;
+  color: #666;
+  border-color: #333;
+}
