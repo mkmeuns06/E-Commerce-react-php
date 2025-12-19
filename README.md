@@ -1,224 +1,517 @@
-# Liste des cours
-- [Installation du projet](./docs/README_START.md)
-- [Active Record](./docs/active-record.md)
+# E-Commerce - Application Full Stack
 
-# 🛒 E-Commerce PHP Vanilla
+Application e-commerce moderne développée avec **PHP (API REST)** et **React** avec un design disco vibrant !
 
-Projet d'application e-commerce développée en PHP pur (sans framework) avec PostgreSQL.
+![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql)
 
-## 📋 Fonctionnalités
+---
 
-### ✅ Fonctionnalités principales
-- ✅ Page d'accueil avec liste de produits
-- ✅ Page détail produit
-- ✅ Système de panier (ajout, suppression, modification quantité)
-- ✅ Authentification utilisateur (inscription + connexion)
-- ✅ Passage de commande (validation du panier)
+## Prérequis
 
-### 🎁 Fonctionnalités bonus
-- ✅ Espace client avec historique des commandes
-- ✅ Filtrage des produits par catégorie
-- ✅ Recherche de produits
-- ✅ Gestion du stock
-- ✅ Interface responsive
+Avant de commencer, assurez-vous d'avoir installé :
 
-## 🏗️ Architecture
+- **PHP** >= 8.0 ([XAMPP](https://www.apachefriends.org/) recommandé)
+- **PostgreSQL** >= 16 ([Télécharger](https://www.postgresql.org/download/))
+- **Node.js** >= 18 ([Télécharger](https://nodejs.org/))
+- **Composer** ([Télécharger](https://getcomposer.org/))
+- **Git** ([Télécharger](https://git-scm.com/))
 
-### Structure du projet
-```
-projet/
-├── app/
-│   ├── Controllers/     # Contrôleurs MVC
-│   ├── Core/            # Classes core (Database, Router, Controller)
-│   ├── Models/          # Modèles de données
-│   └── Views/           # Vues (templates PHP)
-├── public/
-│   ├── css/             # Fichiers CSS
-│   ├── images/          # Images des produits
-│   ├── .htaccess        # Configuration Apache
-│   └── index.php        # Point d'entrée
-├── config.ini           # Configuration base de données
-├── database.sql         # Script de création BDD
-└── README.md
-```
+---
 
-### Technologies utilisées
-- **Backend :** PHP 8+ (vanilla)
-- **Base de données :** PostgreSQL
-- **Frontend :** HTML5, CSS3 (vanilla)
-- **Architecture :** MVC (Model-View-Controller)
+## Installation
 
-## 🚀 Installation
-
-### Prérequis
-- PHP 8.0 ou supérieur
-- PostgreSQL 12 ou supérieur
-- Serveur web (Apache/Nginx) avec mod_rewrite activé
-- Composer (pour l'autoloader)
-
-### Étape 1 : Cloner le projet
+### 1. Cloner le projet
 ```bash
-git clone <url-du-projet>
-cd projet-ecommerce
+git clone https://github.com/mkmeuns06/E-Commerce-react-php.git
+cd "e-commerce php react"
 ```
 
-### Étape 2 : Installer les dépendances
+### 2. Installation des dépendances Backend (PHP)
 ```bash
+cd api
 composer install
+composer dump-autoload
+cd ..
 ```
 
-### Étape 3 : Créer la base de données
-
-1. Connectez-vous à PostgreSQL :
+### 3. Installation des dépendances Frontend (React)
 ```bash
+cd frontend
+npm install
+cd ..
+```
+
+---
+
+## Configuration de la base de données
+
+### Étape 1 : Démarrer PostgreSQL
+
+#### **Via XAMPP Control Panel :**
+1. Ouvrez **XAMPP Control Panel**
+2. Cliquez sur **"Start"** à côté de **PostgreSQL**
+
+#### **Via ligne de commande :**
+```bash
+# Windows
+net start postgresql-x64-16
+
+# Linux/Mac
+sudo service postgresql start
+```
+
+---
+
+### Étape 2 : Créer la base de données
+
+#### **Méthode 1 : Via pgAdmin**
+
+1. Ouvrez **pgAdmin 4**
+2. Connectez-vous avec le mot de passe : `mk`
+3. Clic droit sur **"Databases"** → **"Create"** → **"Database"**
+4. Nom : `ecommerce`
+5. Cliquez sur **"Save"**
+
+#### **Méthode 2 : Via ligne de commande**
+```bash
+# Se connecter à PostgreSQL
 psql -U postgres
-```
 
-2. Créez la base de données :
-```sql
+# Créer la base de données
 CREATE DATABASE ecommerce;
+
+# Se connecter à la base
 \c ecommerce
+
+# Quitter psql
+\q
 ```
 
-3. Importez le script SQL :
+---
+
+### Étape 3 : Importer la structure et les données
+
+#### **Via pgAdmin :**
+
+1. Clic droit sur la base **ecommerce** → **"Query Tool"**
+2. Copiez-collez le contenu du fichier `api/database.sql`
+3. Cliquez sur **Execute**
+
+#### **Via ligne de commande :**
 ```bash
-psql -U postgres -d ecommerce -f database.sql
+# Depuis la racine du projet
+psql -U postgres -d ecommerce -f api/database.sql
 ```
 
-### Étape 4 : Configuration
+---
 
-Modifiez le fichier `config.ini` avec vos informations :
+### Étape 4 : Vérifier l'installation
+```sql
+-- Se connecter à la base
+psql -U postgres -d ecommerce
+
+-- Lister les tables
+\dt
+
+-- Compter les produits
+SELECT COUNT(*) FROM produits;
+
+-- Résultat attendu : 18 produits
+```
+
+---
+
+### Étape 5 : Configuration du backend
+
+Vérifiez le fichier **`api/config.ini`** :
 ```ini
 DB_HOST=localhost
 DB_NAME=ecommerce
 DB_USERNAME=postgres
-DB_PASSWORD=votre_mot_de_passe
+DB_PASSWORD=mk
 ```
 
-### Étape 5 : Configurer le serveur web
+> **Note :** Modifiez ces valeurs selon votre configuration PostgreSQL.
 
-#### Apache
-Le fichier `.htaccess` est déjà configuré dans `public/`
+---
 
-#### Nginx
-Ajoutez cette configuration :
-```nginx
-location / {
-    try_files $uri $uri/ /index.php?$query_string;
-}
-```
+## Lancement du projet
 
-### Étape 6 : Démarrer le serveur
-
-#### Serveur PHP intégré (développement)
+### Terminal 1 : Backend (API PHP)
 ```bash
-cd public
+# Aller dans le dossier api/public
+cd api/public
+
+# Lancer le serveur PHP
 php -S localhost:8000
+
+# Le backend est maintenant accessible sur http://localhost:8000
 ```
 
-#### Apache/Nginx
-Configurez le DocumentRoot vers le dossier `public/`
+**Logs attendus :**
+```
+[Fri Dec 20 10:00:00 2025] PHP 8.2.12 Development Server (http://localhost:8000) started
+```
 
-### Étape 7 : Accéder à l'application
+---
 
-Ouvrez votre navigateur : `http://localhost:8000`
+### Terminal 2 : Frontend (React)
 
-## 👤 Identifiants de test
+**Ouvrez un NOUVEAU terminal** (ne pas fermer celui du backend)
+```bash
+# Aller dans le dossier frontend
+cd frontend
 
-### Utilisateurs
-| Email | Mot de passe | Rôle |
-|-------|--------------|------|
-| admin@test.com | password | Admin |
-| jean@test.com | password | Client |
-| marie@test.com | password | Client |
+# Lancer le serveur Vite
+npm run dev
 
-## 📊 Base de données
+# Le frontend est maintenant accessible sur http://localhost:5173
+```
 
-### Tables principales
-- **users** : Utilisateurs du site
-- **categories** : Catégories de produits
-- **products** : Produits disponibles
-- **orders** : Commandes passées
-- **order_items** : Détails des commandes
+**Logs attendus :**
+```
+  VITE v5.0.8  ready in 500 ms
 
-### Relations
-- Un produit appartient à une catégorie
-- Une commande est associée à un utilisateur
-- Une commande contient plusieurs articles (order_items)
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+```
 
-## 🧪 Tests
+---
 
-### Scénario de test complet
+### Accéder à l'application
 
-1. **Page d'accueil**
-   - Accéder à `/`
-   - Vérifier l'affichage des produits
+Ouvrez votre navigateur et allez sur :
 
-2. **Navigation produits**
-   - Accéder à `/products`
-   - Filtrer par catégorie
-   - Rechercher un produit
+** http://localhost:5173 **
 
-3. **Détail produit**
-   - Cliquer sur un produit
-   - Vérifier l'affichage des détails
+---
 
-4. **Panier**
-   - Ajouter des produits au panier
-   - Modifier les quantités
-   - Supprimer des articles
+## Identifiants de test
 
-5. **Authentification**
-   - S'inscrire avec un nouveau compte
-   - Se connecter
-   - Se déconnecter
+### Utilisateur
+```
+Email    : mireille.moutarde@email.com
+Mot de passe : mireillemoutarde02
 
-6. **Commande**
-   - Se connecter
-   - Ajouter des produits au panier
-   - Valider la commande
-   - Vérifier la confirmation
+---
 
-7. **Espace client**
-   - Accéder à `/account`
-   - Consulter l'historique
-   - Voir les détails d'une commande
+## Structure du projet
+```
+ecommerce-disco/
+│
+├── api/                          
+│   ├── app/
+│   │   ├── Controllers/
+│   │   │   └── Api/             
+│   │   │       ├── ProductApiController.php
+│   │   │       ├── CategoryApiController.php
+│   │   │       ├── AuthApiController.php
+│   │   │       ├── CartApiController.php
+│   │   │       └── OrderApiController.php
+│   │   ├── Core/
+│   │   │   ├── ApiController.php   
+│   │   │   ├── Database.php        
+│   │   │   └── Router.php          
+│   │   └── Models/
+│   │       ├── Client.php
+│   │       ├── Product.php
+│   │       ├── Category.php
+│   │       ├── Cart.php
+│   │       └── Order.php
+│   ├── public/
+│   │   ├── .htaccess             
+│   │   └── index.php             
+│   ├── vendor/                   
+│   ├── config.ini                
+│   ├── composer.json
+│   └── database.sql              
+│
+├── frontend/                     
+│   ├── public/
+│   │   ├── images/               
+│   │   └── logo.svg
+│   ├── src/
+│   │   ├── components/           
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── ProductCard.jsx
+│   │   │   ├── CartItem.jsx
+│   │   │   ├── Loader.jsx
+│   │   │   ├── PrivateRoute.jsx
+│   │   │   ├── StarRating.jsx
+│   │   │   └── ThemeToggle.jsx
+│   │   ├── pages/                
+│   │   │   ├── Home.jsx
+│   │   │   ├── Products.jsx
+│   │   │   ├── ProductDetail.jsx
+│   │   │   ├── Cart.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Checkout.jsx
+│   │   │   ├── OrderConfirmation.jsx
+│   │   │   ├── OrderHistory.jsx
+│   │   │   ├── OrderDetail.jsx
+│   │   │   └── Account.jsx
+│   │   ├── services/             
+│   │   │   ├── api.js
+│   │   │   ├── authService.js
+│   │   │   ├── productService.js
+│   │   │   ├── categoryService.js
+│   │   │   ├── cartService.js
+│   │   │   └── orderService.js
+│   │   ├── context/              
+│   │   │   ├── AuthContext.jsx
+│   │   │   └── CartContext.jsx
+│   │   ├── App.jsx               
+│   │   ├── main.jsx              
+│   │   └── index.css             
+│   ├── node_modules/             
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+│
+└── README.md                     
+```
 
-## 📝 Notes techniques
+---
 
-### Sécurité
-- ✅ Mots de passe hashés avec `password_hash()`
-- ✅ Protection CSRF (sessions)
-- ✅ Requêtes préparées (PDO)
-- ✅ Validation des données
-- ✅ Échappement HTML
+## Technologies utilisées
 
-### Gestion du panier
-Le panier est géré en session PHP (`$_SESSION['cart']`)
+### Backend
+- **PHP 8.2** - Langage serveur
+- **PostgreSQL 16** - Base de données relationnelle
+- **Composer** - Gestionnaire de dépendances PHP
+- **Architecture MVC** - Pattern de conception
 
-### Messages flash
-Les messages de succès/erreur sont stockés en session et affichés une seule fois
+### Frontend
+- **React 18** - Bibliothèque UI
+- **Vite** - Build tool et dev server
+- **React Router** - Gestion des routes
+- **Axios** - Client HTTP
+- **Bootstrap 5** - Framework CSS
+- **React Bootstrap** - Composants Bootstrap pour React
+- **React Hot Toast** - Notifications toast
 
-## 🐛 Dépannage
+---
 
-### Erreur de connexion à la base de données
-- Vérifiez le fichier `config.ini`
-- Vérifiez que PostgreSQL est démarré
-- Testez la connexion : `psql -U postgres -d ecommerce`
+## Fonctionnalités
 
-### Page 404 sur toutes les routes
-- Vérifiez que mod_rewrite est activé (Apache)
-- Vérifiez le fichier `.htaccess`
-- Vérifiez la configuration du DocumentRoot
+### Catalogue
+- Affichage des produits par catégorie
+- Recherche de produits
+- Filtrage par catégorie
+- Pagination (12 produits par page)
+- Système de notation (étoiles)
+- Images des produits
 
-### Erreur "Class not found"
-- Exécutez `composer dump-autoload`
-- Vérifiez les namespaces
+### Panier
+- Ajout/suppression de produits
+- Modification des quantités
+- Calcul du total en temps réel
+- Persistance du panier (session)
 
-## 👨‍💻 Auteur
+### Authentification
+- Inscription utilisateur
+- Connexion/déconnexion
+- Protection des routes privées
+- Gestion de session
 
-Projet réalisé dans le cadre du TP E-Commerce en PHP Vanilla
+### Commandes
+- Validation de commande
+- Historique des commandes
+- Détail d'une commande
+- Statuts de commande (En attente, En préparation, Expédiée, Livrée)
 
-## 📄 Licence
+### Interface
+- Design disco responsive
+- Mode sombre/clair
+- Animations fluides
+- Notifications toast
+- Loader pendant le chargement
 
-Ce projet est à usage éducatif uniquement.
+---
+
+## API Endpoints
+
+### Produits
+```
+GET    /api/products              # Liste des produits
+GET    /api/products/show?id=X   # Détail d'un produit
+GET    /api/products/search?q=X  # Recherche
+GET    /api/products/latest?limit=8  # Derniers produits
+```
+
+### Catégories
+```
+GET    /api/categories            # Liste des catégories
+GET    /api/categories/show?id=X # Produits d'une catégorie
+```
+
+### Authentification
+```
+POST   /api/auth/register         # Inscription
+POST   /api/auth/login            # Connexion
+POST   /api/auth/logout           # Déconnexion
+GET    /api/auth/me               # Utilisateur connecté
+```
+
+### Panier
+```
+GET    /api/cart                  # Récupérer le panier
+POST   /api/cart/add              # Ajouter un produit
+POST   /api/cart/update           # Modifier la quantité
+POST   /api/cart/remove           # Supprimer un produit
+POST   /api/cart/clear            # Vider le panier
+```
+
+### Commandes
+```
+POST   /api/orders/create         # Créer une commande
+GET    /api/orders/history        # Historique des commandes
+GET    /api/orders/show?id=X      # Détail d'une commande
+```
+
+---
+
+## Dépannage
+
+### Problème : Port 8000 déjà utilisé
+```bash
+# Trouver le processus
+netstat -ano | findstr :8000
+
+# Tuer le processus (remplacer PID)
+taskkill /PID <PID> /F
+```
+
+---
+
+### Problème : Port 5173 déjà utilisé
+```bash
+# Trouver le processus
+netstat -ano | findstr :5173
+
+# Tuer le processus
+taskkill /PID <PID> /F
+```
+
+---
+
+### Problème : PostgreSQL ne démarre pas
+```bash
+# Vérifier le statut
+sc query postgresql-x64-16
+
+# Redémarrer le service
+net stop postgresql-x64-16
+net start postgresql-x64-16
+```
+
+---
+
+### Problème : Erreur CORS
+
+**Vérifier :**
+1. Backend sur `localhost:8000`
+2. Frontend sur `localhost:5173`
+3. `api/public/.htaccess` contient les headers CORS
+4. `withCredentials: true` dans `api.js`
+
+---
+
+### Problème : "Cannot connect to database"
+
+**Vérifier `api/config.ini` :**
+```ini
+DB_HOST=localhost
+DB_NAME=ecommerce
+DB_USERNAME=postgres
+DB_PASSWORD=mk
+```
+
+**Tester la connexion :**
+```bash
+psql -U postgres -d ecommerce
+# Mot de passe : mk
+```
+
+---
+
+### Problème : Composer autoload manquant
+```bash
+cd api
+composer install
+composer dump-autoload
+```
+
+---
+
+### Problème : Images des produits ne s'affichent pas
+
+**Vérifier :**
+1. Images dans `frontend/public/images/`
+2. URLs dans la BDD : `/images/smartphone.jpg`
+3. Tester : `http://localhost:5173/images/smartphone.jpg`
+
+---
+
+### Problème : Boutons ne fonctionnent pas
+
+**Vider le cache du navigateur :**
+```
+Ctrl + Shift + R
+```
+
+**Vérifier la console (F12) pour les erreurs JavaScript**
+
+---
+
+## Scripts utiles
+
+### Backend
+```bash
+# Lancer le serveur
+cd api/public && php -S localhost:8000
+
+# Tester une route
+curl http://localhost:8000/api/products
+
+# Regénérer l'autoload
+cd api && composer dump-autoload
+```
+
+### Frontend
+```bash
+# Lancer en développement
+npm run dev
+
+# Build pour production
+npm run build
+
+# Prévisualiser le build
+npm run preview
+```
+
+### Base de données
+```bash
+# Se connecter
+psql -U postgres -d ecommerce
+
+# Exporter la BDD
+pg_dump -U postgres ecommerce > backup.sql
+
+# Importer la BDD
+psql -U postgres -d ecommerce < backup.sql
+```
+
+---
+
+## Auteur
+
+- GitHub: [@mkmeuns06](https://github.com/mkmeuns06)
+
+---
+
