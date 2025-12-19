@@ -29,7 +29,6 @@ export default function Checkout() {
       return;
     }
 
-    // Pré-remplir avec les données du client
     setFormData({
       adresse: user.adresse || '',
       ville: user.ville || '',
@@ -64,7 +63,7 @@ export default function Checkout() {
   return (
     <Container className="py-4">
       <div className="page-header">
-        <h1>✅ Validation de la commande</h1>
+        <h1>Validation de la commande</h1>
       </div>
 
       {error && <Alert variant="danger">{error}</Alert>}
@@ -141,7 +140,7 @@ export default function Checkout() {
           {/* Articles commandés */}
           <Card className="shadow-sm">
             <Card.Header className="bg-light">
-              <h5 className="mb-0">🛍️ Articles commandés ({cart.items.length})</h5>
+              <h5 className="mb-0">Articles commandés ({cart.items.length})</h5>
             </Card.Header>
             <Card.Body>
               {cart.items.map((item) => (
@@ -184,11 +183,11 @@ export default function Checkout() {
           {/* Méthode de paiement */}
           <Card className="mt-4 shadow-sm">
             <Card.Header className="bg-light">
-              <h5 className="mb-0">💳 Méthode de paiement</h5>
+              <h5 className="mb-0">Méthode de paiement</h5>
             </Card.Header>
             <Card.Body>
               <Alert variant="warning">
-                <strong>ℹ️ Mode démonstration</strong>
+                <strong>Mode démonstration</strong>
                 <p className="mb-0 mt-2">
                   Aucun paiement réel ne sera effectué. Cette commande est enregistrée à titre d'exemple.
                 </p>
@@ -201,7 +200,7 @@ export default function Checkout() {
         <Col lg={4}>
           <Card className="shadow-sm sticky-top" style={{ top: '20px' }}>
             <Card.Header className="gradient-bg text-white">
-              <h5 className="mb-0">📊 Récapitulatif</h5>
+              <h5 className="mb-0">Récapitulatif</h5>
             </Card.Header>
             <Card.Body>
               <div className="d-flex justify-content-between mb-2">

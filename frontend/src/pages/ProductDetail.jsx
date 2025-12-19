@@ -95,7 +95,7 @@ export default function ProductDetail() {
               {product.stock > 0 ? (
                 <>
                   <div className="alert alert-success">
-                    ✅ En stock ({product.stock} disponible{product.stock > 1 ? 's' : ''})
+                    En stock ({product.stock} disponible{product.stock > 1 ? 's' : ''})
                   </div>
 
                   <Form.Group className="mb-4">
@@ -138,7 +138,7 @@ export default function ProductDetail() {
               ) : (
                 <>
                   <div className="alert alert-danger">
-                    ❌ Produit en rupture de stock
+                    Produit en rupture de stock
                   </div>
                   <Button variant="secondary" size="lg" className="w-100" disabled>
                     Indisponible
@@ -148,7 +148,7 @@ export default function ProductDetail() {
 
               <hr className="my-4" />
 
-              <h5 className="mb-3">📋 Informations complémentaires</h5>
+              <h5 className="mb-3">Informations complémentaires</h5>
               <ul className="list-unstyled" style={{ lineHeight: '2' }}>
                 <li><strong>Référence :</strong> #{product.id}</li>
                 <li><strong>Prix unitaire :</strong> {parseFloat(product.prix).toFixed(2)} €</li>

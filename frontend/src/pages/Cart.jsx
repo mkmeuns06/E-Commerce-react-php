@@ -62,7 +62,7 @@ export default function Cart() {
         <Col lg={4}>
           <Card className="shadow-sm sticky-top" style={{ top: '20px' }}>
             <Card.Header className="gradient-bg text-white">
-              <h5 className="mb-0">📊 Récapitulatif</h5>
+              <h5 className="mb-0">Récapitulatif</h5>
             </Card.Header>
             <Card.Body>
               <div className="d-flex justify-content-between mb-2">
@@ -89,7 +89,7 @@ export default function Cart() {
                   size="lg" 
                   className="w-100 btn-gradient"
                 >
-                  ✅ Valider la commande
+                  Valider la commande
                 </Button>
               ) : (
                 <>

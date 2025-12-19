@@ -116,7 +116,7 @@ export default function Account() {
   return (
     <Container className="py-4">
       <div className="page-header">
-        <h1>👤 Mon Compte</h1>
+        <h1>Mon Compte</h1>
       </div>
 
       {message.text && (
@@ -141,13 +141,13 @@ export default function Account() {
               
               <div className="d-grid gap-2">
                 <Button as={Link} to="/account" variant="primary" className="btn-gradient">
-                  🏠 Tableau de bord
+                  Tableau de bord
                 </Button>
                 <Button as={Link} to="/orders" variant="outline-primary">
-                  📦 Mes commandes
+                  Mes commandes
                 </Button>
                 <Button variant="outline-danger" onClick={logout}>
-                  🚪 Déconnexion
+                  Déconnexion
                 </Button>
               </div>
             </Card.Body>
@@ -191,10 +191,10 @@ export default function Account() {
           {/* Informations personnelles */}
           <Card className="shadow-sm mb-4">
             <Card.Header className="bg-light d-flex justify-content-between align-items-center">
-              <h5 className="mb-0">ℹ️ Informations personnelles</h5>
+              <h5 className="mb-0">Informations personnelles</h5>
               {!editMode && (
                 <Button variant="outline-primary" size="sm" onClick={() => setEditMode(true)}>
-                  ✏️ Modifier
+                  Modifier
                 </Button>
               )}
             </Card.Header>
@@ -304,7 +304,7 @@ export default function Account() {
           {/* Changer le mot de passe */}
           <Card className="shadow-sm mb-4">
             <Card.Header className="bg-light d-flex justify-content-between align-items-center">
-              <h5 className="mb-0">🔒 Mot de passe</h5>
+              <h5 className="mb-0">Mot de passe</h5>
               {!passwordMode && (
                 <Button variant="outline-primary" size="sm" onClick={() => setPasswordMode(true)}>
                   Changer
@@ -380,7 +380,7 @@ export default function Account() {
                       <div>
                         <strong>Commande {order.numero_commande}</strong>
                         <p className="text-muted small mb-1">
-                          📅 {new Date(order.date_commande).toLocaleDateString('fr-FR')}
+                           {new Date(order.date_commande).toLocaleDateString('fr-FR')}
                         </p>
                         <p className="text-muted small mb-0">
                           {getStatusBadge(order.statut)}
@@ -414,7 +414,7 @@ export default function Account() {
           {/* Avantages */}
           <Card className="gradient-bg text-white shadow-sm mt-4">
             <Card.Body>
-              <h5 className="mb-3">🎁 Vos avantages</h5>
+              <h5 className="mb-3">Vos avantages</h5>
               <ul className="list-unstyled mb-0" style={{ lineHeight: '2' }}>
                 <li>✓ Livraison gratuite sur toutes vos commandes</li>
                 <li>✓ Suivi en temps réel de vos colis</li>

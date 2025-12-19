@@ -40,7 +40,7 @@ export default function Home() {
           <Row className="align-items-center">
             <Col lg={8}>
               <h1 className="display-4 fw-bold mb-3">
-                🎉 Bienvenue sur notre boutique en ligne
+                Bienvenue sur notre boutique en ligne
               </h1>
               <p className="lead mb-4">
                 Découvrez nos meilleurs produits à prix imbattables
@@ -48,9 +48,6 @@ export default function Home() {
               <Button as={Link} to="/products" variant="light" size="lg">
                 Voir tous les produits
               </Button>
-            </Col>
-            <Col lg={4} className="text-center">
-              <div style={{ fontSize: '10rem' }}>🛍️</div>
             </Col>
           </Row>
         </Container>
@@ -60,13 +57,12 @@ export default function Home() {
         {/* Catégories */}
         {categories.length > 0 && (
           <section className="mb-5">
-            <h2 className="text-center mb-4">📂 Nos catégories</h2>
+            <h2 className="text-center mb-4">Nos catégories</h2>
             <Row>
               {categories.map((category) => (
                 <Col md={4} key={category.id} className="mb-3">
                   <Card className="h-100 shadow-sm text-center" style={{ cursor: 'pointer' }}>
                     <Card.Body as={Link} to={`/products?category=${category.id}`} className="text-decoration-none">
-                      <div style={{ fontSize: '3rem' }} className="mb-3">📦</div>
                       <Card.Title className="text-primary">{category.nom}</Card.Title>
                       {category.description && (
                         <Card.Text className="text-muted small">
@@ -83,7 +79,7 @@ export default function Home() {
 
         {/* Produits en vedette */}
         <section>
-          <h2 className="text-center mb-4">🔥 Produits en vedette</h2>
+          <h2 className="text-center mb-4">Produits en vedette</h2>
           {products.length === 0 ? (
             <Card className="text-center py-5">
               <Card.Body>
@@ -106,22 +102,22 @@ export default function Home() {
           <Container>
             <Row className="text-center">
               <Col md={3}>
-                <div style={{ fontSize: '3rem' }}>🚚</div>
+                <div style={{ fontSize: '3rem' }}></div>
                 <h5 className="mt-3">Livraison gratuite</h5>
                 <p className="text-muted">Sur toutes vos commandes</p>
               </Col>
               <Col md={3}>
-                <div style={{ fontSize: '3rem' }}>💳</div>
+                <div style={{ fontSize: '3rem' }}></div>
                 <h5 className="mt-3">Paiement sécurisé</h5>
                 <p className="text-muted">Transactions 100% sécurisées</p>
               </Col>
               <Col md={3}>
-                <div style={{ fontSize: '3rem' }}>🎁</div>
+                <div style={{ fontSize: '3rem' }}></div>
                 <h5 className="mt-3">Satisfait ou remboursé</h5>
                 <p className="text-muted">30 jours de garantie</p>
               </Col>
               <Col md={3}>
-                <div style={{ fontSize: '3rem' }}>📞</div>
+                <div style={{ fontSize: '3rem' }}></div>
                 <h5 className="mt-3">Service client</h5>
                 <p className="text-muted">Disponible 7j/7</p>
               </Col>

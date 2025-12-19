@@ -84,7 +84,7 @@ export default function CartItem({ item }) {
               size="sm"
               onClick={() => removeFromCart(product.id)}
             >
-              🗑️ Supprimer
+              Supprimer
             </Button>
           </Col>
         </Row>

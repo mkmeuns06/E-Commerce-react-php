@@ -123,24 +123,25 @@ export default function Products() {
   return (
     <Container className="py-4">
       <div className="page-header">
-        <h1>🛍️ Nos Produits</h1>
+        <h1>Nos Produits</h1>
       </div>
 
       {/* Barre de recherche et filtres */}
       <Row className="mb-4">
         <Col md={6}>
           <Form onSubmit={handleSearch}>
-            <Form.Group className="d-flex gap-2">
-              <Form.Control
-                type="text"
-                placeholder="🔍 Rechercher un produit..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <Button type="submit" variant="primary" className="btn-gradient">
-                Rechercher
-              </Button>
-            </Form.Group>
+            <Form.Group className="d-flex gap-2 align-items-stretch">
+            <Form.Control
+              type="text"
+              placeholder="🔍 Rechercher un produit..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ flex: 1 }}
+            />
+            <Button type="submit" variant="primary" className="btn-gradient">
+              Rechercher
+            </Button>
+          </Form.Group>
           </Form>
         </Col>
         <Col md={4}>
@@ -148,10 +149,10 @@ export default function Products() {
             value={selectedCategory}
             onChange={(e) => {
               setSelectedCategory(e.target.value);
-              setCurrentPage(1); // Reset à la page 1 après changement de catégorie
+              setCurrentPage(1); 
             }}
           >
-            <option value="">📂 Toutes les catégories</option>
+            <option value="">Toutes les catégories</option>
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>
                 {cat.nom}
@@ -184,7 +185,7 @@ export default function Products() {
       {/* Grille de produits */}
       {currentProducts.length === 0 ? (
         <div className="text-center py-5">
-          <h3>😕 Aucun produit trouvé</h3>
+          <h3>Aucun produit trouvé</h3>
           <p className="text-muted">Essayez de modifier vos critères de recherche</p>
           <Button variant="primary" className="btn-gradient" onClick={handleReset}>
             Voir tous les produits

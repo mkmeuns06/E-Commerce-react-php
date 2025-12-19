@@ -35,7 +35,6 @@ export default function OrderConfirmation() {
     <Container className="py-5">
       <Card className="shadow text-center" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Card.Body className="p-5">
-          <div style={{ fontSize: '5rem' }}>✅</div>
           
           <h1 className="text-success mb-3">Commande confirmée !</h1>
           
@@ -45,7 +44,7 @@ export default function OrderConfirmation() {
           </p>
 
           <Alert variant="info" className="mb-4">
-            <h4>📋 Commande n° {order.numero_commande}</h4>
+            <h4>Commande n° {order.numero_commande}</h4>
           </Alert>
 
           <Card className="mb-4 text-start">

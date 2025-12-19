@@ -40,7 +40,7 @@ export default function OrderHistory() {
   return (
     <Container className="py-4">
       <div className="page-header">
-        <h1>📜 Historique de mes commandes</h1>
+        <h1>Historique de mes commandes</h1>
       </div>
 
       {orders.length === 0 ? (
@@ -67,7 +67,7 @@ export default function OrderHistory() {
                   <div>
                     <h5 className="mb-2">Commande {order.numero_commande}</h5>
                     <p className="text-muted mb-2 small">
-                      📅 {new Date(order.date_commande).toLocaleDateString('fr-FR', {
+                       {new Date(order.date_commande).toLocaleDateString('fr-FR', {
                         day: '2-digit',
                         month: '2-digit', 
                         year: 'numeric',
@@ -79,7 +79,7 @@ export default function OrderHistory() {
                       {getStatusBadge(order.statut)}
                     </div>
                     <p className="text-muted small mb-0">
-                      💳 Paiement effectué
+                       Paiement effectué
                     </p>
                   </div>
                   <div className="text-end">

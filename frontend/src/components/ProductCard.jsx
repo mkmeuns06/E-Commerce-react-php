@@ -5,7 +5,12 @@ import StarRating from './StarRating';
 import toast from 'react-hot-toast';
 
 export default function ProductCard({ product }) {
-  // ... existing code ...
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (productId) => {
+    addToCart(productId);
+    toast.success('Produit ajouté au panier !');
+  };
 
   return (
     <Card className="product-card shadow-sm">
@@ -25,24 +30,19 @@ export default function ProductCard({ product }) {
           📦
         </div>
       )}
-
       <Card.Body className="d-flex flex-column">
         {/* Catégorie */}
         <Badge bg="primary" className="mb-2 align-self-start">
           {product.categorie_nom}
         </Badge>
-
         {/* Titre */}
         <Card.Title>{product.nom}</Card.Title>
-
-        {/* ⭐ AJOUTER ICI LA NOTATION */}
+        {/* Notation */}
         <StarRating rating={parseFloat(product.note)} count={product.nb_avis} />
-
         {/* Description */}
         <Card.Text className="text-muted flex-grow-1">
           {product.description.substring(0, 80)}...
         </Card.Text>
-
         {/* Prix et stock */}
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h4 className="text-primary mb-0">
@@ -52,7 +52,6 @@ export default function ProductCard({ product }) {
             {product.stock > 0 ? `${product.stock} en stock` : 'Rupture'}
           </Badge>
         </div>
-
         {/* Boutons */}
         <div className="d-grid gap-2">
           <Button 

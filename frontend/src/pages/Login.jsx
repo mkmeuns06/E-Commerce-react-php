@@ -41,7 +41,7 @@ export default function Login() {
         <Card className="shadow">
           <Card.Body className="p-5">
             <div className="text-center mb-4">
-              <div style={{ fontSize: '4rem' }}>🔐</div>
+              <div style={{ fontSize: '4rem' }}></div>
               <h2>Connexion</h2>
               <p className="text-muted">Connectez-vous à votre compte</p>
             </div>
@@ -106,10 +106,10 @@ export default function Login() {
               <strong>Identifiants de test :</strong>
             </small>
             <small className="text-muted d-block">
-              📧 Email : jean.dupont@email.com
+              Email : jean.dupont@email.com
             </small>
             <small className="text-muted d-block">
-              🔒 Mot de passe : password
+              Mot de passe : password
             </small>
           </Card.Body>
         </Card>

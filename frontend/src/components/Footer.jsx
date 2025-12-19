@@ -7,7 +7,7 @@ export default function Footer() {
       <Container>
         <Row>
           <Col md={4}>
-            <h5>🛒 E-Commerce</h5>
+            <h5>E-Commerce</h5>
             <p className="text-light">
               Votre boutique en ligne de confiance pour tous vos achats.
             </p>
@@ -23,7 +23,7 @@ export default function Footer() {
           <Col md={4}>
             <h5>Contact</h5>
             <p className="text-light mb-1">📧 contact@ecommerce.com</p>
-            <p className="text-light mb-1">📱 01 23 45 67 89</p>
+            <p className="text-light mb-1">☎️ 01 23 45 67 89</p>
             <p className="text-light">📍 Paris, France</p>
           </Col>
         </Row>

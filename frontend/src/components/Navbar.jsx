@@ -18,7 +18,7 @@ export default function NavbarComponent() {
     <Navbar bg="light" expand="lg" className="navbar-custom gradient-bg" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/" className="fw-bold">
-          🛒 E-Commerce
+          E-Commerce
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -39,7 +39,7 @@ export default function NavbarComponent() {
             <Nav>
 
             {isAuthenticated ? (
-              <NavDropdown title={`👤 ${user?.prenom}`} id="user-dropdown">
+              <NavDropdown title={`${user?.prenom}`} id="user-dropdown">
                 <NavDropdown.Item as={Link} to="/account">
                   Mon compte
                 </NavDropdown.Item>

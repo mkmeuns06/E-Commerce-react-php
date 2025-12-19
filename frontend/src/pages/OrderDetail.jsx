@@ -59,7 +59,7 @@ export default function OrderDetail() {
             <div>
               <h1 className="mb-2">Commande {order.numero_commande}</h1>
               <p className="text-muted mb-2">
-                📅 Passée le {new Date(order.date_commande).toLocaleDateString('fr-FR', {
+                Passée le {new Date(order.date_commande).toLocaleDateString('fr-FR', {
                   day: '2-digit',
                   month: '2-digit',
                   year: 'numeric',
@@ -77,7 +77,7 @@ export default function OrderDetail() {
             <Col md={6}>
               <Card className="bg-light mb-3">
                 <Card.Body>
-                  <h6 className="text-primary mb-3">👤 Client</h6>
+                  <h6 className="text-primary mb-3">Client</h6>
                   <p className="mb-1"><strong>{order.client_prenom} {order.client_nom}</strong></p>
                   <p className="text-muted mb-0">{order.client_email}</p>
                 </Card.Body>
@@ -86,7 +86,7 @@ export default function OrderDetail() {
             <Col md={6}>
               <Card className="bg-light mb-3">
                 <Card.Body>
-                  <h6 className="text-primary mb-3">💰 Montant total</h6>
+                  <h6 className="text-primary mb-3">Montant total</h6>
                   <h3 className="mb-1">{parseFloat(order.montant_total).toFixed(2)} €</h3>
                   <p className="text-muted mb-0 small">TTC, livraison incluse</p>
                 </Card.Body>
@@ -127,7 +127,7 @@ export default function OrderDetail() {
 
       <Card className="shadow-sm">
         <Card.Header className="bg-light">
-          <h5 className="mb-0">🛍️ Articles commandés ({items.length})</h5>
+          <h5 className="mb-0">Articles commandés ({items.length})</h5>
         </Card.Header>
         <Card.Body>
           {items.map((item) => (

@@ -60,7 +60,7 @@ export default function Register() {
         <Card className="shadow">
           <Card.Body className="p-5">
             <div className="text-center mb-4">
-              <div style={{ fontSize: '4rem' }}>📝</div>
+              <div style={{ fontSize: '4rem' }}></div>
               <h2>Inscription</h2>
               <p className="text-muted">Créez votre compte gratuitement</p>
             </div>
